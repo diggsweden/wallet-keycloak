@@ -1,0 +1,24 @@
+# SPDX-FileCopyrightText: 2026 Digg - Agency for Digital Government
+#
+# SPDX-License-Identifier: CC0-1.0
+
+# IDEs
+.idea
+*.iml
+.vscode/
+
+# Node
+node_modules/
+package-lock.json.license
+.npm
+npm-debug.log*
+
+# Linters & Caches
+.rumdl-cache
+.rumdl_cache
+megalinter-reports/
+
+# Local build artifacts
+target/
+*.log
+.env

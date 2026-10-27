@@ -1,0 +1,6 @@
+{
+  "name": "wallet-keycloak",
+  "devDependencies": {
+    "prettier": "3.9.10"
+  }
+}
