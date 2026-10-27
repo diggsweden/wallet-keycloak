@@ -1,0 +1,39 @@
+# SPDX-FileCopyrightText: 2026 Digg - Agency for Digital Government
+#
+# SPDX-License-Identifier: EUPL-1.2
+
+# This repository adheres to the publiccode.yml standard by including this
+# metadata file that makes public software easily discoverable.
+# More info at https://github.com/italia/publiccode.yml
+
+publiccodeYmlVersion: "0.4"
+categories:
+  - identity-management
+  - security
+description:
+  en:
+    features:
+      - Keycloak Authorization Server for EU Digital Identity Wallet
+      - Attestation-Based Client Authentication (ABCA / RFC draft)
+      - Demonstrating Proof-of-Possession (DPoP) support
+      - Pre-configured PID Issuer and Master realms with environment parameterization
+    longDescription: |
+      Custom Keycloak container image for the Digg EU Digital Identity Wallet
+      ecosystem. Packages Keycloak with the European Commission's ABCA extension
+      (eu.europa.ec.eudi:abca-keycloak-ext) to support Wallet Instance Attestation
+      validation, client registration, and credential issuance authorization flows.
+    shortDescription: Keycloak container image with ABCA extension for EUDIW PID Issuance.
+legal:
+  license: EUPL-1.2
+  mainCopyrightOwner: Digg - Agency for Digital Government
+  repoOwner: Digg - Agency for Digital Government
+maintenance:
+  type: internal
+  contacts:
+    - name: Digg Wallet Team
+      email: ospo@digg.se
+name: wallet-keycloak
+releaseDate: "2026-10-27"
+softwareType: standalone/other
+softwareVersion: 0.1.0
+url: https://github.com/diggsweden/wallet-keycloak

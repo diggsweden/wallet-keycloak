@@ -1,0 +1,32 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["local>diggsweden/.github:renovate-base", ":maintainLockFilesWeekly"],
+  "enabledManagers": ["github-actions", "npm", "dockerfile"],
+  "packageRules": [
+    {
+      "description": "Node.js dependencies - Major updates",
+      "matchManagers": ["npm"],
+      "matchUpdateTypes": ["major"],
+      "addLabels": ["dependencies", "major-update"]
+    },
+    {
+      "description": "Node.js dependencies - Non-major updates",
+      "matchManagers": ["npm"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "addLabels": ["dependencies"],
+      "groupName": "npm non-major"
+    },
+    {
+      "description": "GitHub Actions",
+      "matchManagers": ["github-actions"],
+      "addLabels": ["dependencies", "ci"],
+      "groupName": "github-actions"
+    },
+    {
+      "description": "Container base images",
+      "matchManagers": ["dockerfile"],
+      "addLabels": ["dependencies", "docker"],
+      "groupName": "docker"
+    }
+  ]
+}
