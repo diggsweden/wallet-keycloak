@@ -1,0 +1,32 @@
+# SPDX-FileCopyrightText: 2026 Digg - Agency for Digital Government
+#
+# SPDX-License-Identifier: CC0-1.0
+
+version = 1
+
+[[annotations]]
+path = [
+  "README.md",
+  "DEVELOPMENT.md",
+  "CONTRIBUTING.md",
+  "SECURITY.md",
+  "CHANGELOG.md",
+  "renovate.json",
+  ".gommitlint.yaml",
+  ".semgrepignore",
+]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Digg - Agency for Digital Government"
+SPDX-License-Identifier = "CC0-1.0"
+
+[[annotations]]
+path = ["CODE_OF_CONDUCT.md"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "Contributor Covenant"
+SPDX-License-Identifier = "CC-BY-4.0"
+
+[[annotations]]
+path = ["GOVERNANCE.md"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Digg - Agency for Digital Government"
+SPDX-License-Identifier = "EUPL-1.2"
