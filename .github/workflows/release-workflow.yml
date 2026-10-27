@@ -1,0 +1,45 @@
+# SPDX-FileCopyrightText: 2026 Digg - Agency for Digital Government
+#
+# SPDX-License-Identifier: CC0-1.0
+
+# Release Workflow for wallet-keycloak
+# Container image publishing to ghcr.io
+name: Release Workflow
+
+on:
+  push:
+    tags:
+      - "v[0-9]+.[0-9]+.[0-9]+" # Stable: v1.0.0
+      - "v[0-9]+.[0-9]+.[0-9]+-alpha*" # Alpha: v1.0.0-alpha.1
+      - "v[0-9]+.[0-9]+.[0-9]+-beta*" # Beta: v1.0.0-beta.1
+      - "v[0-9]+.[0-9]+.[0-9]+-rc*" # RC: v1.0.0-rc.1
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false # Queue releases, don't cancel partial releases
+
+permissions:
+  contents: read
+
+jobs:
+  release:
+    uses: diggsweden/reusable-ci/.github/workflows/release-orchestrator.yml@1a76b0c1a69952742ea663c8cfe77d8fe1d168ad # v3.1.0
+    permissions:
+      contents: write # Create GitHub releases and tags
+      pull-requests: read # Changelog generation reads merged PRs
+      packages: write # Push container images to ghcr.io
+      id-token: write # Generate OIDC token for SLSA provenance attestation
+      actions: read # Read workflow runs for SLSA provenance generation
+      security-events: write # Upload vulnerability scan results from container scanning
+      attestations: write # Attach SBOM attestation to container images
+    secrets:
+      RELEASE_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+      RELEASE_GPG_PRIVATE_KEY: ${{ secrets.RELEASE_GPG_PRIVATE_KEY }}
+      RELEASE_GPG_PASSPHRASE: ${{ secrets.RELEASE_GPG_PASSPHRASE }}
+      RELEASE_GPG_PUBLIC_KEY: ${{ secrets.RELEASE_GPG_PUBLIC_KEY }}
+      CODE_SCANNING_TOKEN: ${{ secrets.CODE_SCANNING_TOKEN }}
+    with:
+      reusable-ci-ref: 1a76b0c1a69952742ea663c8cfe77d8fe1d168ad
+      artifacts-config: .github/artifacts.yml
+      changelog-creator: git-cliff
+      release-publisher: github-cli

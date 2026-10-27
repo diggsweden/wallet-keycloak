@@ -1,0 +1,26 @@
+# SPDX-FileCopyrightText: 2026 Digg - Agency for Digital Government
+#
+# SPDX-License-Identifier: CC0-1.0
+
+name: Test
+
+on: [workflow_call]
+
+permissions:
+  contents: read
+
+jobs:
+  smoke-test:
+    name: Container Smoke Test
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Build container image
+        run: podman build -t wallet-keycloak:local .
+
+      - name: Run smoke tests
+        run: ./tests/smoke-test.sh wallet-keycloak:local

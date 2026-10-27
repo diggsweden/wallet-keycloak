@@ -1,0 +1,48 @@
+# SPDX-FileCopyrightText: 2026 Digg - Agency for Digital Government
+#
+# SPDX-License-Identifier: CC0-1.0
+
+name: Pull Request Workflow
+
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+      - "release/**"
+      - "feature/**"
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  pr-checks:
+    uses: diggsweden/reusable-ci/.github/workflows/pullrequest-orchestrator.yml@1a76b0c1a69952742ea663c8cfe77d8fe1d168ad # v3.1.0
+    secrets:
+      CODE_SCANNING_TOKEN: ${{ secrets.CODE_SCANNING_TOKEN }}
+    permissions:
+      contents: read
+      packages: read
+      security-events: write
+    with:
+      reusable-ci-ref: 1a76b0c1a69952742ea663c8cfe77d8fe1d168ad
+      project-type: meta
+      linters.devbasecheck: true
+      linters.megalint: false
+      linters.commitlint: false
+      linters.licenselint: false
+      linters.dependencyreview: false
+
+  test:
+    needs: [pr-checks]
+    if: always()
+    permissions:
+      contents: read
+    uses: ./.github/workflows/test.yml
