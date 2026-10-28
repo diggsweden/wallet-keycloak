@@ -7,8 +7,11 @@
 
 artifacts:
   - name: wallet-keycloak
-    project-type: meta
+    project-type: npm
     working-directory: .
+    build-type: application
+    config:
+      node-version: 24
 
 containers:
   - name: wallet-keycloak
