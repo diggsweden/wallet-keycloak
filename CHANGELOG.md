@@ -21,7 +21,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Merge pull request #4 from diggsweden/fix/artifacts-config-meta
 
-
 ## [0.1.1] - 2026-10-28
 
 ### Added
