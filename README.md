@@ -10,7 +10,7 @@ This repository packages an optimized Keycloak distribution configured as the PI
 
 ## Architecture & Features
 
-Keycloak is built ahead-of-time (AOT) with Quarkus `--optimized`:
+Keycloak is built ahead-of-time with `--optimized`:
 
 - Extensions are installed into `/opt/keycloak/providers/`.
 - `dpop`, health, and metrics features are compiled directly into the image.
