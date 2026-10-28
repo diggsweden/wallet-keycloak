@@ -36,6 +36,14 @@ echo "Starting Keycloak container $CONTAINER_NAME from image $IMAGE_TAG..."
   -e KC_BOOTSTRAP_ADMIN_PASSWORD=admin \
   -e KC_HTTP_ENABLED=true \
   -e KC_HOSTNAME_STRICT=false \
+  -e KEYCLOAK_MASTER_FRONTEND_URL="http://localhost:${HTTP_PORT}/idp-internal" \
+  -e KEYCLOAK_WEBAUTHN_RP_ENTITY_NAME="http://localhost:${HTTP_PORT}/idp" \
+  -e KEYCLOAK_WEBAUTHN_RP_ID="localhost" \
+  -e PID_ISSUER_ROOT_URL="http://localhost:${HTTP_PORT}" \
+  -e PID_ISSUER_ADMIN_URL="http://localhost:${HTTP_PORT}" \
+  -e PID_ISSUER_SRV_SECRET="test-secret" \
+  -e KEYCLOAK_STATUS_LIST_URI="http://localhost:${HTTP_PORT}/status-list.jwt" \
+  -e KEYCLOAK_ABCA_TRUST_VALIDATOR_URL="http://localhost:${HTTP_PORT}/trust" \
   "$IMAGE_TAG"
 
 echo "Waiting for Keycloak readiness at http://localhost:${MGMT_PORT}/idp/health/ready..."

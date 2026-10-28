@@ -2,7 +2,7 @@
   "realm": "master",
   "enabled": true,
   "attributes": {
-    "frontendUrl": "${KEYCLOAK_MASTER_FRONTEND_URL:https://localhost/idp-internal}"
+    "frontendUrl": "${KEYCLOAK_MASTER_FRONTEND_URL}"
   },
   "requiredActions": []
 }
