@@ -5,3 +5,7 @@
 gommitlint:
   crypto_signature:
     required: true
+  spell:
+    ignore_words:
+      - artifact
+      - artifacts

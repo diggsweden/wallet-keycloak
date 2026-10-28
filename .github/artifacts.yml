@@ -5,11 +5,14 @@
 # Artifacts Configuration for wallet-keycloak
 # Defines container image publishing for Keycloak with ABCA extension
 
-artifacts: []
+artifacts:
+  - name: wallet-keycloak
+    project-type: meta
+    working-directory: .
 
 containers:
   - name: wallet-keycloak
-    from: []
+    from: [wallet-keycloak]
     container-file: Containerfile
     context: .
     platforms: linux/amd64,linux/arm64
