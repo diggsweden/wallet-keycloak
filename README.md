@@ -6,7 +6,7 @@ This repository packages an optimized Keycloak distribution configured as the PI
 
 - **Attestation-Based Client Authentication (ABCA):** `eu.europa.ec.eudi:abca-keycloak-ext` (`abca-draft07`).
 - **Demonstrating Proof of Possession (DPoP):** RFC 9449 for sender-constrained access tokens.
-- **Pre-configured Realms:** Baked `/opt/keycloak/data/import/` realm files with environment variable overrides for zero-drift deployments between local development (`wallet-ecosystem`) and OpenShift (`wallet-config`).
+- **Pre-configured Realms:** Baked `/opt/keycloak/data/import/` realm files with environment variable overrides for zero-drift deployments between local development and production environments.
 
 ## Architecture & Features
 
