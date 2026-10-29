@@ -8,7 +8,6 @@
 devtools_repo := env("DEVBASE_CHECK_REPO", "https://github.com/diggsweden/devbase-check")
 devtools_dir := env("XDG_DATA_HOME", env("HOME") + "/.local/share") + "/devbase-check"
 lint := devtools_dir + "/linters"
-node_lint := devtools_dir + "/linters/node"
 colors := devtools_dir + "/utils/colors.sh"
 
 # Color variables
@@ -33,7 +32,7 @@ default:
 
 # ▪ Install devtools and tools
 [group('setup')]
-install: setup-devtools tools-install npm-install
+install: setup-devtools tools-install
 
 # ▪ Setup devtools (clone or update)
 [group('setup')]
@@ -66,11 +65,6 @@ check-tools: _ensure-devtools
 [group('setup')]
 tools-install: _ensure-devtools
     @mise install
-
-# Install npm dependencies (for prettier)
-[group('setup')]
-npm-install:
-    npm ci --include=dev
 
 # ==================================================================================== #
 # VERIFY - Quality assurance
@@ -146,18 +140,13 @@ lint-xml:
 lint-container:
     @{{lint}}/container.sh
 
-# Lint Node - prettier check only
-[group('lint')]
-lint-node-format:
-    @{{node_lint}}/format.sh check
-
 # ==================================================================================== #
 # LINT-FIX - Auto-fix code issues
 # ==================================================================================== #
 
 # ▪ Fix all auto-fixable issues
 [group('lint-fix')]
-lint-fix: _ensure-devtools lint-yaml-fix lint-markdown-fix lint-shell-fmt-fix lint-node-format-fix
+lint-fix: _ensure-devtools lint-yaml-fix lint-markdown-fix lint-shell-fmt-fix
     #!/usr/bin/env bash
     source "{{colors}}"
     just_success "All auto-fixes completed"
@@ -176,11 +165,6 @@ lint-markdown-fix:
 [group('lint-fix')]
 lint-shell-fmt-fix:
     @{{lint}}/shell-fmt.sh fix
-
-# Fix Node formatting
-[group('lint-fix')]
-lint-node-format-fix:
-    @{{node_lint}}/format.sh fix
 
 # ==================================================================================== #
 # BUILD - Build container image
