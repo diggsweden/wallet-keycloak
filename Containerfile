@@ -22,6 +22,7 @@ RUN /opt/keycloak/bin/kc.sh build \
 FROM quay.io/keycloak/keycloak:${KEYCLOAK_VERSION}@${KEYCLOAK_DIGEST}
 COPY --from=builder /opt/keycloak/ /opt/keycloak/
 COPY --chown=keycloak:keycloak config/realms/ /opt/keycloak/data/import/
+COPY --chown=keycloak:keycloak config/themes/ /opt/keycloak/themes/
 
 WORKDIR /opt/keycloak
 ENTRYPOINT ["/opt/keycloak/bin/kc.sh"]
