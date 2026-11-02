@@ -10,7 +10,7 @@ FROM quay.io/keycloak/keycloak:${KEYCLOAK_VERSION}@${KEYCLOAK_DIGEST} AS builder
 ARG ABCA_EXT_VERSION=0.2.2
 
 # hadolint ignore=DL3020
-ADD --chown=keycloak:keycloak https://repo1.maven.org/maven2/eu/europa/ec/eudi/abca-keycloak-ext/${ABCA_EXT_VERSION}/abca-keycloak-ext-${ABCA_EXT_VERSION}.jar /opt/keycloak/providers/abca-keycloak-ext-${ABCA_EXT_VERSION}.jar
+ADD --chown=keycloak:keycloak --chmod=0644 https://repo1.maven.org/maven2/eu/europa/ec/eudi/abca-keycloak-ext/${ABCA_EXT_VERSION}/abca-keycloak-ext-${ABCA_EXT_VERSION}.jar /opt/keycloak/providers/abca-keycloak-ext-${ABCA_EXT_VERSION}.jar
 
 RUN /opt/keycloak/bin/kc.sh build \
     --features=dpop \
