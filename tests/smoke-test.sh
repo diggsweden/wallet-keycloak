@@ -20,6 +20,7 @@ IMAGE_TAG="${1:-wallet-keycloak:local}"
 CONTAINER_NAME="wallet-keycloak-test-$$"
 HTTP_PORT="${TEST_HTTP_PORT:-18080}"
 MGMT_PORT="${TEST_MGMT_PORT:-19000}"
+CONTAINER_USER="${TEST_CONTAINER_USER:-10001:0}"
 
 cleanup() {
   echo "Cleaning up container $CONTAINER_NAME..."
@@ -30,6 +31,7 @@ trap cleanup EXIT
 echo "Starting Keycloak container $CONTAINER_NAME from image $IMAGE_TAG..."
 "$CONTAINER_ENGINE" run -d \
   --name "$CONTAINER_NAME" \
+  --user "$CONTAINER_USER" \
   -p "${HTTP_PORT}:8080" \
   -p "${MGMT_PORT}:9000" \
   -e KC_BOOTSTRAP_ADMIN_USERNAME=admin \
