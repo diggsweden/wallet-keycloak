@@ -671,7 +671,8 @@
         "eu.europa.ec.eudi.pid_vc_sd_jwt",
         "eu.europa.ec.eudi.pid_mso_mdoc",
         "org.iso.18013.5.1.mDL",
-        "urn:eudi:ehic:1:dc+sd-jwt"
+        "urn:eudi:ehic:1:dc+sd-jwt",
+        "urn:eu.europa.ec.eudi:learning:credential:1:dc+sd-jwt"
       ],
       "protocolMappers": [
         {
@@ -792,7 +793,8 @@
         "eu.europa.ec.eudi.pid_vc_sd_jwt",
         "eu.europa.ec.eudi.pid_mso_mdoc",
         "org.iso.18013.5.1.mDL",
-        "urn:eudi:ehic:1:dc+sd-jwt"
+        "urn:eudi:ehic:1:dc+sd-jwt",
+        "urn:eu.europa.ec.eudi:learning:credential:1:dc+sd-jwt"
       ],
       "authorizationSettings": {
         "allowRemoteResourceManagement": false,
@@ -988,7 +990,8 @@
         "eu.europa.ec.eudi.pid_vc_sd_jwt",
         "eu.europa.ec.eudi.pid_mso_mdoc",
         "org.iso.18013.5.1.mDL",
-        "urn:eudi:ehic:1:dc+sd-jwt"
+        "urn:eudi:ehic:1:dc+sd-jwt",
+        "urn:eu.europa.ec.eudi:learning:credential:1:dc+sd-jwt"
       ],
       "protocolMappers": [
         {
@@ -1839,6 +1842,18 @@
       ]
     },
     {
+      "id": "89737cf9-e7ba-4ee1-955a-543195a2d397",
+      "name": "urn:eu.europa.ec.eudi:learning:credential:1:dc+sd-jwt",
+      "description": "",
+      "protocol": "openid-connect",
+      "attributes": {
+        "include.in.token.scope": "true",
+        "display.on.consent.screen": "true",
+        "gui.order": "",
+        "consent.screen.text": "Do you consent to issue a Learning Credential?"
+      }
+    },
+    {
       "id": "00bf2e53-5336-47ef-819f-3f1823a2cc81",
       "name": "roles",
       "description": "OpenID Connect scope for add user roles to the access token",
@@ -1893,7 +1908,8 @@
     "eu.europa.ec.eudi.pid_mso_mdoc",
     "eu.europa.ec.eudi.pid_vc_sd_jwt",
     "org.iso.18013.5.1.mDL",
-    "urn:eudi:ehic:1:dc+sd-jwt"
+    "urn:eudi:ehic:1:dc+sd-jwt",
+    "urn:eu.europa.ec.eudi:learning:credential:1:dc+sd-jwt"
   ],
   "browserSecurityHeaders": {
     "contentSecurityPolicyReportOnly": "",
